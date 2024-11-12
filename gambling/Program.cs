@@ -53,16 +53,17 @@ namespace Gambling
         static void Main()
         {
             int green = 1000;
-            Console.WriteLine("Mit szeretnél játszani?");
-            Console.WriteLine("BlackJack (1)");
+            Console.WriteLine("What do you want to play?");
+            Console.WriteLine("BlackJack (1), Red or Black (2),");
             int ans = Convert.ToInt32(Console.ReadLine());
             switch (ans)
             {
                 case 1:
                     BlackJack(green);
-                    Console.WriteLine();
                     break;
-
+                case 2:
+                    RedOrBlack(green);
+                    break;
             }
         }
         static int BlackJack(int funds)
@@ -136,8 +137,28 @@ namespace Gambling
                         }
                     }
                 }
+            }
+        }
 
-            
+        static int RedOrBlack(int funds)
+        {
+            Console.WriteLine("Your bet (max = " + funds + "):");
+            int bet = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Choose a color (red: 1 / black: 2):");
+            int color = Convert.ToInt32(Console.ReadLine());
+
+            int rob = random.Next(1,3);
+
+            if (rob == color)
+            {
+                Console.WriteLine("You win+");
+                return bet;
+            }
+            else
+            {
+                Console.WriteLine("You lose!");
+                return 0     bet;
             }
         }
     }
